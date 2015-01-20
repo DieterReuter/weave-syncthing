@@ -1,15 +1,21 @@
 # run a syncthing server in a weave network
 
-- name: create dir for local sqlite database
-  file: path=/var/log/syncthing/
-        state=directory mode=0777
+- name: add vagrant user for Syncthing (uid=1000, gid=1000)
+  user: name=vagrant
+        uid=1000 
+        state=present
+
+- name: create .config dir for Syncthing
+  file: path=/home/vagrant/.config/syncthing/
+        state=directory mode=0755 owner=vagrant group=vagrant
 
 - name: run syncthing server
   command: weave run {{ weave_client_syncthing_net }} \
              --name syncthing \
              --restart always \
-             -v "/var/log/syncthing:/home/user" \
-             -v "/var/log/syncthing/.config/syncthing:/home/user/.config/syncthing" \
+             -p 8080:8080 \
+             -v "/home/vagrant:/home/user" \
+             -v "/home/vagrant/.config/syncthing:/home/user/.config/syncthing" \
              tianon/syncthing
   changed_when: False
 
