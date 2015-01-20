@@ -1,0 +1,6 @@
+- name: install docker
+  hosts: cloudservers
+  roles:
+    - { role: install_docker, sudo: yes, tags: 'docker' }
+    - { role: install_weave, sudo: yes, tags: 'docker' }
+    - { role: run_weave_server, sudo: yes, tags: 'docker' }

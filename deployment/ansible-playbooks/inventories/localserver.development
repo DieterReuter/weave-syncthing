@@ -1,0 +1,10 @@
+[localservers]
+local1.development
+
+# give the localservers a common configuration
+[cfg_localservers:children]
+localservers
+
+# give the localservers a development configuration
+[cfg_localservers_development:children]
+localservers

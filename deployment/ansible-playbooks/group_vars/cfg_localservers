@@ -1,0 +1,5 @@
+docker_registry_name: "hypriot-registry"
+docker_registry_index_name: "hypriot-registry-index"
+drone_name: "hypriot-drone"
+drone_github_client: "undef"
+drone_github_secret: "undef"

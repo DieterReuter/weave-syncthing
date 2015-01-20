@@ -1,0 +1,6 @@
+# install weave command from source repo
+- name: install weave script
+  copy: src=weave
+        dest=/usr/local/bin/weave
+        mode=755 owner=root group=root
+

@@ -1,0 +1,9 @@
+# provide the ssh connection details that Ansible needs
+# to connect to our Vagrant development boxes
+
+ansible_ssh_port: 2222
+ansible_ssh_user: vagrant
+ansible_sudo_pass: vagrant
+
+# this is the relativ path from our ansible-playbooks folder
+ansible_ssh_private_key_file: ../../vagrant/.vagrant/machines/default/virtualbox/private_key

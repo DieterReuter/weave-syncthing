@@ -1,0 +1,15 @@
+# run a syncthing server in a weave network
+
+- name: create dir for local sqlite database
+  file: path=/var/log/syncthing/
+        state=directory mode=0777
+
+- name: run syncthing server
+  command: weave run {{ weave_client_syncthing_net }} \
+             --name syncthing \
+             --restart always \
+             -v "/var/log/syncthing:/home/user" \
+             -v "/var/log/syncthing/.config/syncthing:/home/user/.config/syncthing" \
+             tianon/syncthing
+  changed_when: False
+

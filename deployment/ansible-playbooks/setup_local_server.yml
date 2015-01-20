@@ -1,0 +1,7 @@
+- name: install docker
+  hosts: localservers
+  roles:
+    - { role: install_docker, sudo: yes, tags: 'docker' }
+    - { role: install_weave, sudo: yes, tags: 'docker' }
+    - { role: run_weave_client, sudo: yes, tags: 'docker' }
+    - { role: run_weave_syncthing, sudo: yes, tags: 'docker' }

@@ -1,0 +1,30 @@
+# installs docker.io from the official docker repository
+- name: add key for docker repository
+  apt_key: id='A88D21E9'
+           url='https://get.docker.io/gpg'
+           state=present
+
+- name: add docker repository
+  apt_repository: repo="deb http://get.docker.io/ubuntu docker main"
+                  state=present
+
+- name: get kernel info
+  command: uname -r
+  register: uname_result
+  changed_when: False
+
+- name: install kernel extras for aufs storage support for docker
+  apt: name=linux-image-extra-{{ uname_result.stdout }}
+       state=present
+
+- name: install most recent version of docker
+  apt: name=lxc-docker
+       state=present
+
+- name: install pip
+  apt: name=python-pip
+       state=present
+
+- name: pip install docker-py
+  pip: name=docker-py
+       state=present

@@ -1,0 +1,5 @@
+ansible_ssh_host: 127.0.0.1
+
+weave_server_ipaddress: 178.62.115.122
+weave_client_syncthing_net: 10.0.1.101/24
+

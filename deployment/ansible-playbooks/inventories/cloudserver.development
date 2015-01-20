@@ -1,0 +1,10 @@
+[cloudservers]
+cloud.development
+
+# give the cloudservers a common configuration
+[cfg_cloudservers:children]
+cloudservers
+
+# give the cloudservers a development configuration
+[cfg_cloudservers_development:children]
+cloudservers

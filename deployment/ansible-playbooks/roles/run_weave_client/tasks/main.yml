@@ -1,0 +1,6 @@
+# run a weave network server
+
+- name: run weave network server
+  command: weave launch {{ weave_server_ipaddress }}
+  changed_when: False
+
